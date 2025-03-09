@@ -12,41 +12,41 @@ import { FlatCompat } from '@eslint/eslintrc'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const compat = new FlatCompat({
-	baseDirectory: __dirname,
-	recommendedConfig: js.configs.recommended,
-	allConfig: js.configs.all,
+    baseDirectory: __dirname,
+    recommendedConfig: js.configs.recommended,
+    allConfig: js.configs.all,
 })
 
 export default [
-	...compat.extends(
-		'plugin:cypress/recommended',
-		'plugin:chai-friendly/recommended',
-		'plugin:@typescript-eslint/recommended',
-		'plugin:prettier/recommended'
-	),
-	{
-		plugins: {
-			'@typescript-eslint': typescriptEslint,
-			prettier,
-			cypress,
-			'chai-friendly': chaiFriendly,
-		},
+    ...compat.extends(
+        'plugin:cypress/recommended',
+        'plugin:chai-friendly/recommended',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:prettier/recommended'
+    ),
+    {
+        plugins: {
+            '@typescript-eslint': typescriptEslint,
+            prettier,
+            cypress,
+            'chai-friendly': chaiFriendly,
+        },
 
-		languageOptions: {
-			globals: {
-				...globals.node,
-			},
+        languageOptions: {
+            globals: {
+                ...globals.node,
+            },
 
-			parser: tsParser,
-			ecmaVersion: 'latest',
-			sourceType: 'module',
-		},
+            parser: tsParser,
+            ecmaVersion: 'latest',
+            sourceType: 'module',
+        },
 
-		rules: {
-			'no-unused-vars': 'off',
-			'@typescript-eslint/no-unused-vars': 'error',
-			'cypress/no-unnecessary-waiting': 'error',
-			'cypress/no-async-tests': 'error',
-		},
-	},
+        rules: {
+            'no-unused-vars': 'off',
+            '@typescript-eslint/no-unused-vars': 'error',
+            'cypress/no-unnecessary-waiting': 'error',
+            'cypress/no-async-tests': 'error',
+        },
+    },
 ]

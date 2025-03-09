@@ -1,6 +1,6 @@
 # Cypress Template
 
-![example workflow](https://github.com/Rogerio-N/cypress-ts-template/actions/workflows/main.yaml/badge.svg)  
+![example workflow](https://github.com/Rogerio-N/cypress-ts-test/actions/workflows/main.yaml/badge.svg)  
 
 ![Cypress](https://img.shields.io/badge/Cypress-black?style=for-the-badge&logo=cypress&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/Typescript-blue?style=for-the-badge&logo=typescript&logoColor=white)
@@ -11,12 +11,27 @@ This is a template repository. Its purpose is to be used in new projects that us
 ### Pre-requisites
 
 - [Node 16](https://nodejs.org/en/download/)
+- [Docker](https://www.docker.com/get-started/)
 
 ### Setup
 
-1 - Install dependencies: `npm install`
+1 - Start the docker container (this is an unofficial [cypress-realworld-app](https://github.com/cypress-io/cypress-realworld-app) docker image):
+```
+docker run -d -p 3000:3000 -p 3001:3001 -p 3002:3002 rogerionk/cypress-real-world-app:latest
+```
 
-2 - To run locally: `npm run start:local`
+2 - Install project dependencies: 
+```
+npm install
+```
+
+3 - To run tests locally: 
+```
+npm run start:local
+```
+
+3.1 - To open the application, access [http://localhost:3000/signin](http://localhost:3000/signin)
+
 
 ### Setup browserstack (optional)
 
