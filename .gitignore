@@ -1,0 +1,11 @@
+node_modules
+
+dist/
+
+#Browsertack
+log/
+
+#Cypress
+cypress/videos
+cypress/screenshots
+cypress/downloads
