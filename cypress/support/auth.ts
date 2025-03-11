@@ -1,14 +1,18 @@
-import LoginPage from '../pages/login'
+import LoginPage from 'cypress/pages/login'
 
-Cypress.Commands.add(
-    'login',
-    (email: string | undefined, password: string | undefined) => {
-        if (!email || !password) {
-            throw new Error('Email and password are required')
-        }
+Cypress.Commands.add('login', (username: string) => {
+    cy.session([username], () => {
+        cy.visit('/signin')
         const loginPage = new LoginPage()
-        loginPage.typeEmail(email)
-        loginPage.typePassword(password)
-        loginPage.clickButtonSignin()
-    }
-)
+        cy.fixture('users').then((users) => {
+            const user = users.results.filter(
+                (user) => user.username === username
+            )[0]
+            cy.intercept('POST', '/login').as('login')
+            loginPage.typeUsername(user.username)
+            loginPage.typePassword(Cypress.env('defaultPassword'))
+            loginPage.clickButtonSignin()
+            cy.wait('@login').its('response.statusCode').should('eq', 200)
+        })
+    })
+})

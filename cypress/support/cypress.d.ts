@@ -13,7 +13,7 @@ declare global {
                 fixtureName: K
             ): Chainable<FixtureTypes[K]>
 
-            login(email: string | undefined, password: string | undefined)
+            login(username: string)
         }
     }
 }
