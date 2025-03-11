@@ -1,27 +1,74 @@
-[
-    {
-		"name": "random name",
-		"email": "random email",
-		"password": "random password",
-		"address": {
-			"street": "random street",
-			"number": "number",
-			"zipcode": "4635402"
-		}
-	},
-    {
-		"name": "random name",
-		"email": "random email",
-		"password": "random password",
-		"address": {
-			"street": "random street",
-			"number": "number",
-			"zipcode": "4635402"
-		}
-	},
-	{
-		"name": "random name",
-		"email": "roni_cost@example.com",
-		"password": "roni_cost3@example.com"
-	}
-]
+{
+    "results": [
+        {
+            "id": "Vai4OmPij",
+            "uuid": "efed139f-88db-4d44-8fa5-593e5cfca5ad",
+            "firstName": "Lafayette",
+            "lastName": "Hickle",
+            "username": "Keegan35",
+            "email": "Magnolia87@gmail.com",
+            "phoneNumber": "550-344-4605",
+            "avatar": "https://avatars.dicebear.com/api/human/Vai4OmPij.svg",
+            "defaultPrivacyLevel": "private",
+            "balance": 182631,
+            "createdAt": "2024-06-03T13:55:54.932Z",
+            "modifiedAt": "2025-03-04T11:24:13.920Z"
+        },
+        {
+            "id": "CqXjAf7Qn2",
+            "uuid": "3f657206-ad7e-45fb-b579-b72e971457cc",
+            "firstName": "Dallin",
+            "lastName": "Rice",
+            "username": "Joy91",
+            "email": "Baron76@yahoo.com",
+            "phoneNumber": "395-477-1626",
+            "avatar": "https://avatars.dicebear.com/api/human/CqXjAf7Qn2.svg",
+            "defaultPrivacyLevel": "contacts",
+            "balance": 91568,
+            "createdAt": "2024-03-22T12:45:09.387Z",
+            "modifiedAt": "2025-03-04T06:12:59.570Z"
+        },
+        {
+            "id": "sxyq-83Yxx",
+            "uuid": "50e4c779-5263-4c27-a216-83f340037296",
+            "firstName": "Leanna",
+            "lastName": "Stamm",
+            "username": "Titus14",
+            "email": "Dianna_Windler@gmail.com",
+            "phoneNumber": "673-981-2957",
+            "avatar": "https://avatars.dicebear.com/api/human/sxyq-83Yxx.svg",
+            "defaultPrivacyLevel": "private",
+            "balance": 180521,
+            "createdAt": "2024-10-10T20:30:18.209Z",
+            "modifiedAt": "2025-03-04T10:44:35.210Z"
+        },
+        {
+            "id": "JBAxY_PuKr",
+            "uuid": "e807964a-ebd7-4eb6-82be-d9333e3ac60f",
+            "firstName": "Dahlia",
+            "lastName": "Rodriguez",
+            "username": "Jocelyn.Grady",
+            "email": "Maximillia.Trantow@gmail.com",
+            "phoneNumber": "456-562-7580",
+            "avatar": "https://avatars.dicebear.com/api/human/JBAxY_PuKr.svg",
+            "defaultPrivacyLevel": "private",
+            "balance": 44642,
+            "createdAt": "2025-01-17T21:59:04.867Z",
+            "modifiedAt": "2025-03-04T11:35:52.300Z"
+        },
+        {
+            "id": "CL_iad5JOL",
+            "uuid": "890d4a15-2e00-4768-8a32-47da5de4b691",
+            "firstName": "Arnold",
+            "lastName": "Abshire",
+            "username": "Tristin98",
+            "email": "Oliver55@hotmail.com",
+            "phoneNumber": "841-951-9623",
+            "avatar": "https://avatars.dicebear.com/api/human/CL_iad5JOL.svg",
+            "defaultPrivacyLevel": "private",
+            "balance": 194056,
+            "createdAt": "2024-12-18T12:11:46.251Z",
+            "modifiedAt": "2025-03-04T00:52:39.997Z"
+        }
+    ]
+}

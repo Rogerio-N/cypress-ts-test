@@ -1,12 +1,12 @@
 class LoginPage {
     private elements = {
-        inputEmail: () => cy.get('#email'),
-        inputPassword: () => cy.get('#pass'),
-        buttonSignin: () => cy.get('#send2'),
+        inputUsername: () => cy.get('#username'),
+        inputPassword: () => cy.get('#password'),
+        buttonSignin: () => cy.get('[data-test="signin-submit"]'),
     }
 
-    typeEmail(email: string) {
-        this.elements.inputEmail().type(email)
+    typeUsername(username: string) {
+        this.elements.inputUsername().type(username)
     }
 
     typePassword(password: string) {
