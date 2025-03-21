@@ -16,9 +16,22 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: 'Install OS dependencies'
+        run: sudo apt-get update && sudo apt-get install -y libgtk2.0-0t64 libgtk-3-0t64 libgbm-dev libnotify-dev libnss3 libxss1 libasound2t64 libxtst6 xauth xvfb
+
+      - name: 'Start app'
+        run: docker run -d --name real-world-app -p 3000:3000 -p 3001:3001 -p 3002:3002 rogerionk/cypress-real-world-app:latest
       
       - name: 'Install dependencies'
         run: npm install
 
       - name: 'Run test'
         run: npm run start:bs
+        env:
+          cypress_defaultPassword: ${{ secrets.cypress_defaultPassword }}
+
+      - name: 'Stop and remove container'
+        run: |
+          docker stop real-world-app
+          docker rm real-world-app
