@@ -14,6 +14,12 @@ declare global {
             ): Chainable<FixtureTypes[K]>
 
             login(username: string)
+
+            createTransaction(
+                value?: number,
+                note?: string,
+                type?: 'payment' | 'request'
+            )
         }
     }
 }
