@@ -3,7 +3,11 @@ export class CreateTransactionPage {
         listUser: () => cy.get('[data-test="users-list"]'),
         inputSearchUser: () => cy.get('[data-test="user-list-search-input"]'),
         inputAmout: () => cy.get('#amount'),
+        textAmountHelper: () =>
+            cy.get('#transaction-create-amount-input-helper-text'),
         inputNote: () => cy.get('#transaction-create-description-input'),
+        textNoteHelper: () =>
+            cy.get('#transaction-create-description-input-helper-text'),
         buttonRequest: () =>
             cy.get('[data-test="transaction-create-submit-request"]'),
         buttonPay: () =>
@@ -32,20 +36,44 @@ export class CreateTransactionPage {
         this.elements.inputSearchUser().type(username)
     }
 
+    getUsersList() {
+        return this.elements.listUser()
+    }
+
     typeAmount(amount: string) {
         this.elements.inputAmout().type(amount)
+    }
+
+    getTextAmountHelper() {
+        return this.elements.textAmountHelper()
     }
 
     typeNote(note: string) {
         this.elements.inputNote().type(note)
     }
 
+    getInputNote() {
+        return this.elements.inputNote()
+    }
+
+    getTextNoteHelper() {
+        return this.elements.textNoteHelper()
+    }
+
     clickButtonRequest() {
         this.elements.buttonRequest().click()
     }
 
+    getButtonRequest() {
+        return this.elements.buttonRequest()
+    }
+
     clickButtonPay() {
         this.elements.buttonPay().click()
+    }
+
+    getButtonPay() {
+        return this.elements.buttonPay()
     }
 
     getCheckSelectContactStep() {
@@ -70,5 +98,13 @@ export class CreateTransactionPage {
             .parent()
             .parent()
             .find('[data-testid="CheckCircleIcon"]')
+    }
+
+    clickButtonReturn() {
+        this.elements.buttonReturn().click()
+    }
+
+    clickButtonCreateAnother() {
+        this.elements.buttonCreateAnother().click()
     }
 }
