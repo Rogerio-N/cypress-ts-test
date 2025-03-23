@@ -3,15 +3,17 @@ import { CreateTransactionPage } from 'cypress/pages/createTransactionPage'
 describe('Transaction test scenarios', () => {
     beforeEach(() => {
         cy.login('Keegan35')
-
-        cy.intercept('GET', '/users', (req) => {
-            delete req.headers['if-none-match']
-        }).as('getUsers')
-        cy.visit('/transaction/new')
-        cy.wait('@getUsers').its('response.statusCode').should('eq', 200)
     })
 
     describe('Create transaction', () => {
+        beforeEach(() => {
+            cy.intercept('GET', '/users', (req) => {
+                delete req.headers['if-none-match']
+            }).as('getUsers')
+            cy.visit('/transaction/new')
+            cy.wait('@getUsers').its('response.statusCode').should('eq', 200)
+        })
+
         it('should create a payment transaction', () => {
             const createTransactionPage = new CreateTransactionPage()
             createTransactionPage.selectRandomUser()
