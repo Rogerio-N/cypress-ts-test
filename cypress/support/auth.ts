@@ -1,4 +1,4 @@
-import LoginPage from 'cypress/pages/login'
+import LoginPage from 'cypress/pages/loginPage'
 
 Cypress.Commands.add('login', (username: string) => {
     cy.session([username], () => {

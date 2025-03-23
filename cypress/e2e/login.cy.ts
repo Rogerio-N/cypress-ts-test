@@ -1,4 +1,4 @@
-import LoginPage from 'cypress/pages/login'
+import LoginPage from 'cypress/pages/loginPage'
 
 describe('Login test cenarios', () => {
     beforeEach(() => {
