@@ -1,4 +1,5 @@
 import { CreateTransactionPage } from 'cypress/pages/createTransactionPage'
+import { ListTransactionPage } from 'cypress/pages/listTransactionPage'
 
 describe('Transaction test scenarios', () => {
     beforeEach(() => {
@@ -116,6 +117,71 @@ describe('Transaction test scenarios', () => {
                 createTransactionPage.getButtonPay().should('be.disabled')
                 createTransactionPage.getButtonRequest().should('be.disabled')
             })
+        })
+    })
+
+    describe('List public transactions', () => {
+        it('should list public transactions', () => {
+            cy.intercept('GET', '/transactions/public', (req) => {
+                delete req.headers['if-none-match']
+            }).as('getPublicTransactions')
+            cy.visit('/')
+            cy.wait('@getPublicTransactions')
+                .its('response.statusCode')
+                .should('eq', 200)
+
+            const listTransactionPage = new ListTransactionPage()
+            listTransactionPage
+                .getListTransaction()
+                .should('exist')
+                .and('be.visible')
+                .and('not.be.empty')
+
+            cy.intercept('GET', '/transactions/public*', (req) => {
+                delete req.headers['if-none-match']
+            }).as('getPublicTransactions')
+            listTransactionPage.scrollDownTransactionList()
+            cy.wait('@getPublicTransactions')
+                .its('response.statusCode')
+                .should('eq', 200)
+            listTransactionPage.scrollDownTransactionList()
+            cy.wait('@getPublicTransactions')
+                .its('response.statusCode')
+                .should('eq', 200)
+        })
+
+        it('should list public transactions with filters', () => {
+            cy.createTransaction()
+            cy.intercept('GET', '/transactions/public', (req) => {
+                delete req.headers['if-none-match']
+            }).as('getPublicTransactions')
+            cy.visit('/')
+            cy.wait('@getPublicTransactions')
+                .its('response.statusCode')
+                .should('eq', 200)
+
+            const listTransactionPage = new ListTransactionPage()
+            listTransactionPage.filterTransactionByDate()
+        })
+
+        it.only('should display message when list is empty', () => {
+            cy.intercept('GET', '/transactions/public', (req) => {
+                delete req.headers['if-none-match']
+            }).as('getPublicTransactions')
+            cy.visit('/')
+            cy.wait('@getPublicTransactions')
+                .its('response.statusCode')
+                .should('eq', 200)
+
+            const listTransactionPage = new ListTransactionPage()
+
+            cy.intercept('GET', '/transactions/public*', (req) => {
+                delete req.headers['if-none-match']
+            }).as('getPublicTransactionsWithFilters')
+            listTransactionPage.filterTransactionByDate('2025-01-05')
+            cy.wait('@getPublicTransactionsWithFilters')
+
+            listTransactionPage.getTextEmptyList().should('exist')
         })
     })
 })
