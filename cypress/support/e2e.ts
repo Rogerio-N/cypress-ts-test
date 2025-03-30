@@ -16,3 +16,4 @@
 import '@testing-library/cypress/add-commands'
 import './auth'
 import './transaction'
+import './bankAccount'
