@@ -164,7 +164,7 @@ describe('Transaction test scenarios', () => {
             listTransactionPage.filterTransactionByDate()
         })
 
-        it.only('should display message when list is empty', () => {
+        it('should display message when list is empty', () => {
             cy.intercept('GET', '/transactions/public', (req) => {
                 delete req.headers['if-none-match']
             }).as('getPublicTransactions')
