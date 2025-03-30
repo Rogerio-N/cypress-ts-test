@@ -19,3 +19,12 @@ export const aliasQuery = (
         req.alias = `gql${operationName}Query`
     }
 }
+
+export const aliasMutation = (
+    req: CyHttpMessages.IncomingHttpRequest,
+    operationName: string
+) => {
+    if (hasOperationName(req, operationName)) {
+        req.alias = `gql${operationName}Mutation`
+    }
+}

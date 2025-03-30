@@ -12,4 +12,8 @@ export class ListBankAccountsPage {
     getModalRequiredBankAccount() {
         return this.elemets.modalRequiredBankAccount()
     }
+
+    clickButtonCreateBankAccount() {
+        this.elemets.buttonCreateBankAccount().click({ force: true })
+    }
 }
