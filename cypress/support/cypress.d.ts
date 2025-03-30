@@ -20,6 +20,12 @@ declare global {
                 note?: string,
                 type?: 'payment' | 'request'
             )
+
+            createBankAccount(
+                name?: string,
+                routingNumber?: string,
+                accountNumber?: string
+            )
         }
     }
 }
