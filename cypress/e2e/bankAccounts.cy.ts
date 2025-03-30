@@ -208,4 +208,31 @@ describe('Bank accounts test', () => {
             })
         })
     })
+
+    describe('Delete bank account', () => {
+        it('should delete bank account', () => {
+            cy.createBankAccount()
+            const listBankAccountsPage = new ListBankAccountsPage()
+            cy.intercept(gqlRouteMatcher, (req) => {
+                aliasQuery(req, 'ListBankAccount')
+            })
+            cy.visit('/bankaccounts')
+            cy.wait('@gqlListBankAccountQuery')
+                .its('response.statusCode')
+                .should('eq', 200)
+
+            cy.intercept(gqlRouteMatcher, (req) => {
+                aliasMutation(req, 'DeleteBankAccount')
+            })
+            listBankAccountsPage.clickLastButtonDelete()
+            cy.wait('@gqlDeleteBankAccountMutation')
+                .its('response.statusCode')
+                .should('eq', 200)
+            listBankAccountsPage
+                .getListBankAccounts()
+                .children()
+                .last()
+                .should('contain.text', '(Deleted)')
+        })
+    })
 })
